@@ -36,6 +36,8 @@ internal class Program
         services.AddTransient<TextMessageController>();
         services.AddTransient<InlineKeyboardController>();
 
+        services.AddTransient<IFileHandler, AudioFileHandler>();
+
         //Хранилище пользовательских данных в памяти
         services.AddSingleton<IStorage, MemoryStorage>();
 
@@ -49,7 +51,12 @@ internal class Program
     {
         return new AppSettings()
         {
-            BotToken = "6299377057:AAHaNlY93hdrdQVanTPgmMibgQt41UDidRA"
+            DownloadsFolder = "C:\\Users\\Marat\\Downloads",
+            BotToken = "6299377057:AAHaNlY93hdrdQVanTPgmMibgQt41UDidRA",
+            AudioFileName = "audio",
+            InputAudioFormat = "ogg",
+            OutputAudioFormat = "wav", // Новое поле
+            InputAudioBitrate = 48000,
         };
     }
 }
